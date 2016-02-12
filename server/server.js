@@ -1,14 +1,16 @@
 var express = require('express');
 var app = express();
-// var server = require('http').Server(app);
+var server = require('http').Server(app);
 var bodyParser = require('body-parser');
-// var io = require('socket.io')(server);
+var io = require('socket.io')(server);
 var db = require('./db.js');
 var port = process.env.PORT || 8080;
 
 module.exports = app;
 
-// server.listen(80);
+server.listen(port, function(){
+  console.log('listening on port ' + port);
+});
 
 app.use('/', express.static( __dirname + '/../client' ));
 app.use('/node_modules',express.static(__dirname+'/../node_modules/'));
@@ -19,12 +21,12 @@ app.get('/', function(req, res){
 
 app.use(bodyParser.json());
 
-// io.on('connection', function (socket) {
-//   socket.emit('news', { hello: 'world' });
-//   socket.on('my other event', function (data) {
-//     console.log(data);
-//   });
-// });
+io.on('connection', function (socket) {
+  socket.emit('news', { sockets: 'work' });
+  socket.on('my other event', function (data) {
+    console.log(data);
+  });
+});
 
 //for getting vote results
 app.get('/countVotes' , function (req, res) {
@@ -54,10 +56,6 @@ app.get('/countVotes' , function (req, res) {
   }
 
   var counted = countVotes(data);
-  
+
   res.json(counted);
 })
-
-app.listen(port, function(){
-  console.log('listening on port ' + port);
-});
