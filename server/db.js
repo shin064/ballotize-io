@@ -10,13 +10,12 @@ mongoose.connect(db.dbURI);
 db.Schema = mongoose.Schema;
 db.roomSchema = new db.Schema ({
   roomcode: { type: String, required: true, unique: true },
-  categories: {},
-  candidates: {},
+  options: {},
+  numberOfWinners: { type: Number },
   voters: {},
   results: {}
 });
 db.roomSchema.plugin(uniqueValidator);
 db.Room = mongoose.model('Room', db.roomSchema);
-
 
 module.exports = db;
