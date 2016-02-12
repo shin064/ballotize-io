@@ -5,7 +5,12 @@ var Ballotize = angular.module('Ballotize', [
   'admin',
   'uservote',
   'results'
-])
+]);
+
+Ballotize.factory('room',function(){
+  var room = {};
+  return room;
+})
 
 Ballotize.config(function($stateProvider, $urlRouterProvider) {
 

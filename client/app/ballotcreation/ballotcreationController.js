@@ -1,6 +1,7 @@
 var ballotcreation = angular.module('ballotcreation', []);
 
-ballotcreation.controller('ballotcreationController', ['$scope','$http',function($scope,$http){
+
+ballotcreation.controller('ballotcreationController', ['$scope','$http','$state','room',function($scope,$http,$state,room){
   
   this.hello = 'hello from ballotcreation controller';
 
@@ -26,7 +27,11 @@ ballotcreation.controller('ballotcreationController', ['$scope','$http',function
 	    data: JSON.stringify(this.saved),
 	    headers: {'Content-Type': 'application/json'}
 	  }).then(function success(response){
-	    console.log('success',response)
+	    console.log('success',response);
+	    room.roomcode = response.data.roomcode;
+	    room.topic = response.data.topic;
+	    room.options = response.data.options;
+	    $state.go('results');
 	  }, function error(response){
 	    console.log('error',response);
 	  });
