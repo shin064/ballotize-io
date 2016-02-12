@@ -1,6 +1,31 @@
-<div>
-  hello from landing page view!
-  <div>{{ landingpage.hello }}</div>
+<div class="container">
 
-  <a ui-sref="ballotcreation"><button type="button">Create a Ballot</button></a>
+  <h1>Join a Ballot</h1>
+
+  <form class="form-horizontal">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+      <input type="text" class="form-control" placeholder="Name (optional)">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-ok"></i></span>
+      <input type="text" class="form-control" placeholder="Enter Ballot Code">
+    </div>
+    <button type="submit" class="btn btn-md btn-success btn-block">
+      Ready to Vote
+    </button>
+  </form>
+
+  <h1>Create a Ballot</h1>
+  
+    <form class="form-horizontal">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+      <input type="text" class="form-control" placeholder="Name (optional)">
+    </div>
+    <button class="btn btn-md btn-success btn-block" ui-sref="ballotcreation">
+      Create a Ballot
+    </button>
+  </form>
+
 </div>
