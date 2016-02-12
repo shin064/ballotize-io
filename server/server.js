@@ -12,14 +12,18 @@ server.listen(port, function(){
   console.log('listening on port ' + port);
 });
 
+//serving static files
 app.use('/', express.static( __dirname + '/../client' ));
 app.use('/node_modules',express.static(__dirname+'/../node_modules/'));
-
 app.get('/', function(req, res){
   res.sendFile(path.join(__dirname, '/../client/index.html'));
 });
 
 app.use(bodyParser.json());
+
+//routes
+app.use('/ballot', require('./routes/ballot_route'));
+
 
 io.on('connection', function (socket) {
   socket.emit('news', { sockets: 'work' });

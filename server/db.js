@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var uniqueValidator = require('mongoose-unique-validator');
+//var uniqueValidator = require('mongoose-unique-validator');
 
 var db = {};
 
@@ -9,13 +9,14 @@ db.dbURI = 'mongodb://localhost/ballotize';
 mongoose.connect(db.dbURI);
 db.Schema = mongoose.Schema;
 db.roomSchema = new db.Schema ({
-  roomcode: { type: String, required: true, unique: true },
+  roomcode: { type: Number, required: true},
+  topic: { type: String },
   options: {},
   numberOfWinners: { type: Number },
   voters: {},
   results: {}
 });
-db.roomSchema.plugin(uniqueValidator);
+//db.roomSchema.plugin(uniqueValidator);
 db.Room = mongoose.model('Room', db.roomSchema);
 
 module.exports = db;
