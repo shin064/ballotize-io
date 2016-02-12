@@ -5,12 +5,15 @@
     <title>Ballotize IO</title>
   </head>
   <body>
-    <div>
-      <h1>hello from index</h1>
-      <div ui-view></div>
-    </div>
+    <div ui-view></div>
+
+    <!-- Angular dependencies -->
     <script src='./../node_modules/angular/angular.min.js'></script>
     <script src='./../node_modules/ui-router/release/angular-ui-router.min.js'></script>
+
+    <!-- Controllers -->
+    <script src='./app/ballotcreation/ballotcreationController.js'></script>
+    <script src='./app/landingpage/landingpageController.js'></script>
     <script src='./app/test/testController.js'></script>
     <script src='./app/index.js'></script>
   </body>

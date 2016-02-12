@@ -1,6 +1,8 @@
 var Ballotize = angular.module('Ballotize', [
   'ui.router',
-  'test'
+  'test',
+  'landingpage',
+  'ballotcreation'
 ])
 
 Ballotize.config(function($stateProvider, $urlRouterProvider) {
@@ -12,7 +14,19 @@ Ballotize.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('landing', {
       url: '/',
-      templateUrl: 'app/test/test.html',
+      templateUrl: 'app/landingpage/landingpageTemplate.html',
+      controller: 'landingpageController',
+      controllerAs: 'landingpage'
+    })
+    .state('ballotcreation', {
+      url: '/create',
+      templateUrl: 'app/ballotcreation/ballotcreationTemplate.html',
+      controller: 'ballotcreationController',
+      controllerAs: 'ballotcreation'
+    })
+    .state('test', {
+      url: '/test',
+      templateUrl: 'app/test/testTemplate.html',
       controller: 'testController',
       controllerAs: 'test'
     });
