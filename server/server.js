@@ -13,8 +13,10 @@ module.exports = app;
 app.use('/', express.static( __dirname + '/../client' ));
 
 app.get('/', function(req, res){
-  res.sendFile(path.join(__dirname, '../client/index.html'));
+  res.sendFile(path.join(__dirname, '/../client/index.html'));
 });
+
+app.use(bodyParser.json());
 
 // io.on('connection', function (socket) {
 //   socket.emit('news', { hello: 'world' });
