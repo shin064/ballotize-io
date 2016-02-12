@@ -12,7 +12,7 @@ Ballotize.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('landing', {
       url: '/',
-      templateUrl: 'app/test/view.html',
+      templateUrl: 'app/test/test.html',
       controller: 'testController',
       controllerAs: 'test'
     });
