@@ -2,31 +2,44 @@
   <form novalidate class="form-horizontal">
     <label>Topic</label>
     <div id="input-group">
-      <input type="text" ng-model="ballotcreation.topic" />
-      <ul>
-        <li ng-repeat="(key,value) in ballotcreation.options">Option {{key}}: <input type="text" ng-model="ballotcreation.options[key]" /></li>
+      <input
+        type="text"
+        class="form-control"
+        ng-model="ballotcreation.topic" />
+      <ul ng-repeat="(key,value) in ballotcreation.options">
+        <li>
+          Option {{key}}:
+          <input
+          type="text"
+          class="form-control"
+          ng-model="ballotcreation.options[key]" />
+        </li>
       </ul>
     </div>
 
     <button
       type="text"
+      class="btn btn-sm btn-info btn-block"
       ng-click="ballotcreation.add()">
       Add a choice
     </button>
     <button
       type="text"
+      class="btn btn-sm btn-warning btn-block"
       ng-click="ballotcreation.remove()">
       Remove a choice
     </button>
 
     <button
       type="text"
+      class="btn btn-sm btn-danger btn-block"
       ng-click="ballotcreation.reset()">
       Reset
     </button>
 
     <button
       type="text"
+      class="btn btn-sm btn-success btn-block"
       ng-click="ballotcreation.submit()">
       Submit
     </button>
