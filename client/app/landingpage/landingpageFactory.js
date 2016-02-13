@@ -24,11 +24,10 @@ landingpage.factory('BallotizeFactory', ['$http', function($http){
     $http({
        method: 'GET',
        url: '/ballot',
-       data: JSON.stringify({
+       params: {
          code: input,
          username: username
-       }),
-       headers: {'Content-Type': 'application/json'}
+       }
      }).then(function success(response){
        console.log('success',response)
      }, function error(response){

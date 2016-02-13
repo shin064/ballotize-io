@@ -2,6 +2,12 @@ var express = require('express');
 var router = express.Router();
 var db = require('../db');
 
+router.get('/',function(req,res){
+	console.log('GET request to /ballot route');
+	console.log('req.query',req.query);
+	console.log('req.body',req.body);
+})
+
 router.post('/',function(req,res){
 	console.log('POST request to /ballot route');
 
