@@ -1,12 +1,18 @@
 var landingpage = angular.module('landingpage', []);
 
-landingpage.controller('landingpageController', ['$scope', 'BallotizeFactory', function($scope, BallotizeFactory){
-  this.username = '';
-  this.code = '';
+landingpage.controller('landingpageController', ['$scope', 'User', 'Ballot', function($scope, User, Ballot){
+  var ctrl = this;
 
-  this.setInfo = function(username, code){
-    BallotizeFactory.setUser(username);
-    BallotizeFactory.setCode(code);
-    BallotizeFactory.getBallot(code, username);
+  ctrl.username = '';
+  ctrl.code = '';
+
+  ctrl.fetchRoom = function(username, code){
+    User.setUser(username);
+    User.setCode(code);
+    Ballot.fetchBallot(code, username);
+  }
+
+  ctrl.setInfo = function(username){
+    User.setUser(username);
   }
 }]);

@@ -1,31 +1,30 @@
 var ballotcreation = angular.module('ballotcreation', []);
 
 
-ballotcreation.controller('ballotcreationController', ['$scope','$http','$state','BallotizeFactory',function($scope,$http,$state,BallotizeFactory){
+ballotcreation.controller('ballotcreationController',  ['$scope', '$http', '$state', 'User', function($scope, $http, $state, User){
+  var ctrl = this;
 
-  this.hello = 'hello from ballotcreation controller';
+	ctrl.saved = {};
 
-	this.saved = {};
-
-	this.add = function(){
-	  this.options[++this.counter]='';
+	ctrl.add = function(){
+	  ctrl.options[++ctrl.counter] = '';
 	}
 
-	this.remove = function(){
-	  delete this.options[this.counter--];
-	  if (this.counter<0) {
-	    this.counter=0;
+	ctrl.remove = function(){
+	  delete ctrl.options[ctrl.counter--];
+	  if(ctrl.counter < 0){
+	    ctrl.counter = 0;
 	  }
 	}
 
-	this.submit = function() {
-	  this.saved.topic = this.topic;
-	  this.saved.options = angular.copy(this.options);
-	  this.saved.username = BallotizeFactory.getUser();
+	ctrl.submit = function() {
+	  ctrl.saved.topic = ctrl.topic;
+	  ctrl.saved.options = angular.copy(ctrl.options);
+	  ctrl.saved.username = User.getUser();
 	  $http({
 	    method: 'POST',
 	    url: '/ballot',
-	    data: JSON.stringify(this.saved),
+	    data: JSON.stringify(ctrl.saved),
 	    headers: {'Content-Type': 'application/json'}
 	  }).then(function success(response){
 	    console.log('success',response);
@@ -35,12 +34,12 @@ ballotcreation.controller('ballotcreationController', ['$scope','$http','$state'
 	  });
 	};
 
-	this.reset = function() {
-		this.master = {1:''};
-	  this.options = angular.copy(this.master);
-	  this.topic = '';
-	  this.counter = 1;
+	ctrl.reset = function() {
+		ctrl.master = {1: ''};
+	  ctrl.options = angular.copy(ctrl.master);
+	  ctrl.topic = '';
+	  ctrl.counter = 1;
 	};
 
-	this.reset();
+	ctrl.reset();
 }]);
