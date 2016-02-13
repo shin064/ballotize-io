@@ -34,9 +34,30 @@ Ballotize.factory('Ballot', ['$http', '$state', 'User', function($http, $state, 
     return currentBallot;
   }
 
+  var voteBallot = function(username, roomcode, choiceKey){
+    console.log('in vote ballot', arguments);
+    $state.go('results');
+
+    // $http({
+    //   method: 'POST',
+    //   url: '/vote',
+    //   params: {
+    //     code: roomcode,
+    //     username: username,
+    //     choice: choiceKey
+    //   }
+    // }).then(function success(response){
+    //   console.log('success',response);
+    //   $state.go('results');
+    // }, function error(response){
+    //   console.log('error',response);
+    // });
+  }
+
   return {
     fetchBallot: fetchBallot,
     setBallot: setBallot,
-    getBallot: getBallot
+    getBallot: getBallot,
+    voteBallot: voteBallot
   }
 }]);

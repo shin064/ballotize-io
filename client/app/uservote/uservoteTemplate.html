@@ -1,7 +1,9 @@
-<div>
+<div class="container">
   <h2>Topic: {{ uservote.topic }}</h2>
   <div class="form-group" ng-repeat="(key, option) in uservote.options">
-    {{key}}
-    {{option}}  
+    <button class="btn btn-default btn-md btn-block" ng-click="uservote.selectChoice(key)">
+      {{option}}
+    </button>
   </div>
+  <button class="btn btn-success btn-md btn-block" ng-click="uservote.submitVote()">Make my vote count</button>
 </div>
