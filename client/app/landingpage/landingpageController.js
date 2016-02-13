@@ -1,7 +1,11 @@
 var landingpage = angular.module('landingpage', []);
 
-landingpage.controller('landingpageController', ['$scope', function($scope){
-  
-  this.hello = 'hello from landingpage controller';
+landingpage.controller('landingpageController', ['$scope', 'BallotizeFactory', function($scope, BallotizeFactory){
+  this.username = '';
+  this.code = '';
 
+  this.setInfo = function(username, code){
+    BallotizeFactory.setUser(username);
+    BallotizeFactory.setCode(code);
+  }
 }]);

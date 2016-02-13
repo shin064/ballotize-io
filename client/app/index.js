@@ -7,17 +7,10 @@ var Ballotize = angular.module('Ballotize', [
   'results'
 ]);
 
-Ballotize.factory('room',function(){
-  var room = {};
-  return room;
-})
-
 Ballotize.config(function($stateProvider, $urlRouterProvider) {
 
-  // For any unmatched url, redirect to /
   $urlRouterProvider.otherwise("/");
 
-  // Now set up the states
   $stateProvider
     .state('landing', {
       url: '/',
