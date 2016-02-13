@@ -1,10 +1,7 @@
 var ballotcreation = angular.module('ballotcreation', []);
 
 
-ballotcreation.controller('ballotcreationController', ['$scope','$http','$state','BallotizeFactory',function($scope,$http,$state,BallotizeFactory){
-
-  this.hello = 'hello from ballotcreation controller';
-
+ballotcreation.controller('ballotcreationController',  ['$scope', '$http', '$state', 'User', function($scope, $http, $state, User){
 	this.saved = {};
 
 	this.add = function(){

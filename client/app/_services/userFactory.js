@@ -1,8 +1,8 @@
-var landingpage = angular.module('landingpage');
+var Ballotize = angular.module('Ballotize');
 
-landingpage.factory('BallotizeFactory', ['$http', '$state', function($http, $state){
-  var code = '';
+Ballotize.factory('User', ['$http', '$state', function($http, $state){
   var user = '';
+  var code = '';
 
   var setUser = function(username){
     user = username;
