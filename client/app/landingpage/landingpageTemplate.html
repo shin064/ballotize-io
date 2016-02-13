@@ -24,7 +24,7 @@
     <button
       type="submit"
       class="btn btn-md btn-success btn-block"
-      ng-click="landingpage.setInfo(username, code)">
+      ng-click="landingpage.fetchRoom(username, code)">
       Ready to Vote
     </button>
   </form>
@@ -43,7 +43,8 @@
     </div>
     <button
       class="btn btn-md btn-success btn-block"
-      ui-sref="ballotcreation">
+      ui-sref="ballotcreation"
+      ng-click="landingpage.setInfo(owner)">
       Create a Ballot
     </button>
   </form>

@@ -1,5 +1,7 @@
 <div>
   <h2>Topic: {{ uservote.topic }}</h2>
-  <div class="form-group">
+  <div class="form-group" ng-repeat="(key, option) in uservote.options">
+    {{key}}
+    {{option}}  
   </div>
 </div>

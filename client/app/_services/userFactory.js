@@ -5,8 +5,7 @@ Ballotize.factory('User', [function(){
   var code = '';
 
   var setUser = function(username){
-    user = username;
-    return user;
+    return user = username;
   }
 
   var getUser = function(){
