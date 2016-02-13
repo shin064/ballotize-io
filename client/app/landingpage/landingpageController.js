@@ -1,6 +1,6 @@
 var landingpage = angular.module('landingpage', []);
 
-landingpage.controller('landingpageController', ['$scope', 'User', function($scope, User){
+landingpage.controller('landingpageController', ['$scope', 'User', 'Ballot', function($scope, User, Ballot){
   var ctrl = this;
 
   ctrl.username = '';
@@ -9,6 +9,6 @@ landingpage.controller('landingpageController', ['$scope', 'User', function($sco
   ctrl.setInfo = function(username, code){
     User.setUser(username);
     User.setCode(code);
-    User.getBallot(code, username);
+    Ballot.getBallot(code, username);
   }
 }]);

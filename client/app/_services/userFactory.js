@@ -1,6 +1,6 @@
 var Ballotize = angular.module('Ballotize');
 
-Ballotize.factory('User', ['$http', '$state', function($http, $state){
+Ballotize.factory('User', [function(){
   var user = '';
   var code = '';
 
@@ -23,31 +23,10 @@ Ballotize.factory('User', ['$http', '$state', function($http, $state){
     return code;
   }
 
-  var getBallot = function(input, username){
-    $http({
-       method: 'GET',
-       url: '/ballot',
-       params: {
-         code: input,
-         username: username
-       }
-     }).then(function success(response){
-       if(response.data.name === 'CastError'){
-         console.log('enter a valid code')
-       } else {
-         $state.go('uservote');
-         console.log(response);
-       }
-     }, function error(response){
-       console.log('error',response);
-     });
-  }
-
   return {
     setUser: setUser,
     getUser: getUser,
     setCode: setCode,
-    getCode: getCode,
-    getBallot: getBallot
+    getCode: getCode
   }
 }]);
