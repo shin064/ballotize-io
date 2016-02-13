@@ -51,8 +51,12 @@ router.post('/',function(req,res){
 		results:results
 	});
 
+	room.voters = {};
+	room.voters[owner]=false;
+
 	room.markModified('options');
 	room.markModified('results');
+	room.markModified('voters');
 	room.save(function(err,savedRoom){
 		if (err){
 			console.log('error saving room: ',err);
