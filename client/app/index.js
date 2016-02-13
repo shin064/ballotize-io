@@ -7,11 +7,6 @@ var Ballotize = angular.module('Ballotize', [
   'results'
 ]);
 
-Ballotize.factory('room',function(){
-  var room = {};
-  return room;
-})
-
 Ballotize.config(function($stateProvider, $urlRouterProvider) {
 
   $urlRouterProvider.otherwise("/");
