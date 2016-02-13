@@ -27,28 +27,32 @@ router.get('/',function(req,res){
 
 router.post('/',function(req,res){
 	console.log('POST request to /ballot route');
-	console.log(req.body);
 
 	var topic = req.body.topic;
 	var options = req.body.options;
 	var owner = req.body.username;
 
-	console.log('topic',topic);
-	console.log('options',options);
+	var results = [];
+	for (var i=0; i<Object.keys(options).length; i++){
+		results.push(0);
+	}
+
+	console.log('results',results);
 
 	var roomcode = Math.floor(Math.random()*9000)+1000;
-	console.log('roomcode',roomcode);
 
 	var room = new db.Room({
 		roomcode:roomcode,
 		topic:topic,
 		options:options,
 		owner:owner,
-		voters:{fuy7:false}
+		voters:{fuy7:false},
+		results:results
 	});
 
 	room.markModified('options');
 	room.markModified('voters');
+	room.markModified('results');
 	room.save(function(err,savedRoom){
 		if (err){
 			console.log('error saving room: ',err);

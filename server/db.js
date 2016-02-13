@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 
 var db = {};
 
+
 //******DATABASE SET UP
 
 db.dbURI = 'mongodb://localhost/ballotize';
@@ -15,7 +16,7 @@ db.roomSchema = new db.Schema ({
   options: {},
   numberOfWinners: { type: Number },
   voters: {},
-  results: {}
+  results: []
 }, {toJSON:{minimize:false}});
 //db.roomSchema.plugin(uniqueValidator);
 db.Room = mongoose.model('Room', db.roomSchema);
