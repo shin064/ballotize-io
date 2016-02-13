@@ -34,7 +34,7 @@ io.on('connection', function (socket) {
   });
   socket.on('new vote',function(data){
     console.log('new vote: ',data);
-
+    handleNewVote(data);
   })
 });
 
