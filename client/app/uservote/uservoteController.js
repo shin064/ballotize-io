@@ -1,12 +1,30 @@
 var uservote = angular.module('uservote', []);
 
-uservote.controller('uservoteController', ['$scope', 'Ballot', function($scope, Ballot){
+uservote.controller('uservoteController', ['$scope', 'User', 'Ballot', function($scope, User, Ballot){
   var ctrl = this;
   var ballot = Ballot.getBallot();
+  var hasVoted = false;
+  var currentChoice = null;
 
   ctrl.roomcode = ballot.roomcode;
   ctrl.topic = ballot.topic;
   ctrl.options = ballot.options;
 
-  ctrl.hello = 'hello from uservote controller';
+  ctrl.selectChoice = function(choiceKey){
+    currentChoice = choiceKey;
+  }
+
+  ctrl.submitVote = function(){
+    var user = User.getUser();
+    var roomCode = User.getCode();
+
+    if(currentChoice === null){
+      console.log('please select a choice to vote for');
+    }
+
+    if(!hasVoted && currentChoice !== null){
+      Ballot.voteBallot(user, roomCode, currentChoice);
+      hasVoted = true;
+    }
+  }
 }]);
