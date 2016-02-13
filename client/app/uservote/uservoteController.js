@@ -1,6 +1,6 @@
 var uservote = angular.module('uservote', []);
 
-uservote.controller('uservoteController', ['$scope', 'User', 'Ballot', function($scope, User, Ballot){
+uservote.controller('uservoteController', ['$scope', 'User', 'Ballot', 'Socket', function($scope, User, Ballot, Socket){
   var ctrl = this;
   var ballot = Ballot.getBallot();
   var hasVoted = false;
@@ -23,7 +23,7 @@ uservote.controller('uservoteController', ['$scope', 'User', 'Ballot', function(
     }
 
     if(!hasVoted && currentChoice !== null){
-      Ballot.voteBallot(user, roomCode, currentChoice);
+      Socket.emit('new vote', {code: roomCode, username: user, choice: currentChoice});
       hasVoted = true;
     }
   }
