@@ -1,6 +1,5 @@
 var results = angular.module('results', []);
 
-results.controller('resultsController', ['$scope','room',function($scope,room){
+results.controller('resultsController', ['$scope',function($scope){
   this.hello = 'hello from results controller!';
-  console.log('room inside results page: ',room);
 }]);
