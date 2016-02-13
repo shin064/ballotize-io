@@ -32,8 +32,12 @@ Ballotize.factory('User', ['$http', '$state', function($http, $state){
          username: username
        }
      }).then(function success(response){
-       console.log('success',response)
-       $state.go('uservote');
+       if(response.data.name === 'CastError'){
+         console.log('enter a valid code')
+       } else {
+         $state.go('uservote');
+         console.log(response);
+       }
      }, function error(response){
        console.log('error',response);
      });
