@@ -15,8 +15,10 @@ router.get('/',function(req,res){
 		}
 		else {
 			console.log('found room: ',room);
-			delete room.voters.fuy7;
-			room.voters[username]=true;
+			if (!room.voters) {
+				room.voters = {};
+			}
+			room.voters[username]=false;
 			room.markModified('voters');
 			room.save(function(err,room){
 				res.json(room);
@@ -46,13 +48,15 @@ router.post('/',function(req,res){
 		topic:topic,
 		options:options,
 		owner:owner,
-		voters:{fuy7:false},
 		results:results
 	});
 
+	room.voters = {};
+	room.voters[owner]=false;
+
 	room.markModified('options');
-	room.markModified('voters');
 	room.markModified('results');
+	room.markModified('voters');
 	room.save(function(err,savedRoom){
 		if (err){
 			console.log('error saving room: ',err);
