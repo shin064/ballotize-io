@@ -5,8 +5,9 @@ var bodyParser = require('body-parser');
 var io = require('socket.io')(server);
 var db = require('./db.js');
 var port = process.env.PORT || 8080;
+var handleNewVote = require('./functions/handleNewVote');
 
-module.exports = app;
+//module.exports = {app:app, io:io};
 
 server.listen(port, function(){
   console.log('listening on port ' + port);
@@ -31,6 +32,10 @@ io.on('connection', function (socket) {
   socket.on('my other event', function (data) {
     console.log(data);
   });
+  socket.on('new vote',function(data){
+    console.log('new vote: ',data);
+
+  })
 });
 
 //for getting vote results
