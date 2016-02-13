@@ -18,7 +18,7 @@ router.get('/',function(req,res){
 			if (!room.voters) {
 				room.voters = {};
 			}
-			room.voters[username]=true;
+			room.voters[username]=false;
 			room.markModified('voters');
 			room.save(function(err,room){
 				res.json(room);
