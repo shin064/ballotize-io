@@ -1,7 +1,6 @@
 var ballotcreation = angular.module('ballotcreation', []);
 
-
-ballotcreation.controller('ballotcreationController',  ['$scope', '$http', '$state', 'User', function($scope, $http, $state, User){
+ballotcreation.controller('ballotcreationController',  ['$scope', '$http', '$state', 'User', 'Ballot', function($scope, $http, $state, User, Ballot){
   var ctrl = this;
 
 	ctrl.saved = {};
@@ -21,17 +20,7 @@ ballotcreation.controller('ballotcreationController',  ['$scope', '$http', '$sta
 	  ctrl.saved.topic = ctrl.topic;
 	  ctrl.saved.options = angular.copy(ctrl.options);
 	  ctrl.saved.username = User.getUser();
-	  $http({
-	    method: 'POST',
-	    url: '/ballot',
-	    data: JSON.stringify(ctrl.saved),
-	    headers: {'Content-Type': 'application/json'}
-	  }).then(function success(response){
-	    console.log('success',response);
-	    $state.go('uservote');
-	  }, function error(response){
-	    console.log('error',response);
-	  });
+	  Ballot.createBallot(ctrl.saved);
 	};
 
 	ctrl.reset = function() {
