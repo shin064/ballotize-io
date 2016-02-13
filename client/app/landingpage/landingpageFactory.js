@@ -5,10 +5,13 @@ landingpage.factory('BallotizeFactory', ['$http', function($http){
   var user = '';
 
   var setUser = function(username){
-    return user = username;
+    user = username;
+    console.log('setUser called, user: ',user);
+    return user;
   }
 
   var getUser = function(){
+    console.log('getUser called, user: ',user);
     return user;
   }
 

@@ -1,7 +1,7 @@
 var ballotcreation = angular.module('ballotcreation', []);
 
 
-ballotcreation.controller('ballotcreationController', ['$scope','$http','$state',function($scope,$http,$state){
+ballotcreation.controller('ballotcreationController', ['$scope','$http','$state','BallotizeFactory',function($scope,$http,$state,BallotizeFactory){
 
   this.hello = 'hello from ballotcreation controller';
 
@@ -21,6 +21,7 @@ ballotcreation.controller('ballotcreationController', ['$scope','$http','$state'
 	this.submit = function() {
 	  this.saved.topic = this.topic;
 	  this.saved.options = angular.copy(this.options);
+	  this.saved.username = BallotizeFactory.getUser();
 	  $http({
 	    method: 'POST',
 	    url: '/ballot',
