@@ -4,8 +4,19 @@ var db = require('../db');
 
 router.get('/',function(req,res){
 	console.log('GET request to /ballot route');
-	console.log('req.query',req.query);
-	console.log('req.body',req.body);
+	var roomcode = Number(req.query.code);
+	var username = req.query.username;
+
+	db.Room.findOne({roomcode:roomcode},function(err,room){
+		if (err){
+			console.log('error finding room');
+			res.send(err);
+		}
+		else {
+			console.log('found room: ',room);
+			res.json(room);
+		}
+	});
 })
 
 router.post('/',function(req,res){
