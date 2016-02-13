@@ -38,11 +38,13 @@
       <input
         type="text"
         class="form-control"
-        placeholder="Name (optional)">
+        placeholder="Name (optional)"
+        ng-model="owner">
     </div>
     <button
       class="btn btn-md btn-success btn-block"
-      ui-sref="ballotcreation">
+      ui-sref="ballotcreation"
+      ng-click="landingpage.setInfo(owner)">
       Create a Ballot
     </button>
   </form>
