@@ -1,6 +1,6 @@
 var landingpage = angular.module('landingpage');
 
-landingpage.factory('BallotizeFactory', ['$http', function($http){
+landingpage.factory('BallotizeFactory', ['$http', '$state', function($http, $state){
   var code = '';
   var user = '';
 
@@ -33,6 +33,7 @@ landingpage.factory('BallotizeFactory', ['$http', function($http){
        }
      }).then(function success(response){
        console.log('success',response)
+       $state.go('uservote');
      }, function error(response){
        console.log('error',response);
      });
