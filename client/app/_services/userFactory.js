@@ -6,12 +6,10 @@ Ballotize.factory('User', [function(){
 
   var setUser = function(username){
     user = username;
-    console.log('setUser called, user: ',user);
     return user;
   }
 
   var getUser = function(){
-    console.log('getUser called, user: ',user);
     return user;
   }
 

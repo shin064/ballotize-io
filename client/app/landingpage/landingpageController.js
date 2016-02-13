@@ -9,6 +9,6 @@ landingpage.controller('landingpageController', ['$scope', 'User', 'Ballot', fun
   ctrl.setInfo = function(username, code){
     User.setUser(username);
     User.setCode(code);
-    Ballot.getBallot(code, username);
+    Ballot.fetchBallot(code, username);
   }
 }]);
