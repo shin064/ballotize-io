@@ -7,5 +7,6 @@ landingpage.controller('landingpageController', ['$scope', 'BallotizeFactory', f
   this.setInfo = function(username, code){
     BallotizeFactory.setUser(username);
     BallotizeFactory.setCode(code);
+    BallotizeFactory.getBallot(code, username);
   }
 }]);
