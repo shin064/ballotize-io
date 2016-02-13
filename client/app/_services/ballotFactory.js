@@ -38,20 +38,20 @@ Ballotize.factory('Ballot', ['$http', '$state', 'User', function($http, $state, 
     console.log('in vote ballot', arguments);
     $state.go('results');
 
-    // $http({
-    //   method: 'POST',
-    //   url: '/vote',
-    //   params: {
-    //     code: roomcode,
-    //     username: username,
-    //     choice: choiceKey
-    //   }
-    // }).then(function success(response){
-    //   console.log('success',response);
-    //   $state.go('results');
-    // }, function error(response){
-    //   console.log('error',response);
-    // });
+    $http({
+      method: 'POST',
+      url: '/vote',
+      data: {
+        code: roomcode,
+        username: username,
+        choice: choiceKey
+      }
+    }).then(function success(response){
+      console.log('success',response);
+      $state.go('results');
+    }, function error(response){
+      console.log('error',response);
+    });
   }
 
   return {
