@@ -16,7 +16,7 @@ uservote.controller('uservoteController', ['$scope', 'User', 'Ballot', function(
 
   ctrl.submitVote = function(){
     var user = User.getUser();
-    var roomCode = User.getCode();
+    var roomCode = ctrl.roomcode;
 
     if(currentChoice === null){
       console.log('please select a choice to vote for');
