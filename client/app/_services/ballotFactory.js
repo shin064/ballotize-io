@@ -11,6 +11,7 @@ Ballotize.factory('Ballot', ['$http', '$state', 'User', function($http, $state, 
 	    headers: {'Content-Type': 'application/json'}
 	  }).then(function success(response){
 	    console.log('success',response);
+      setBallot(response.data);
 	    $state.go('uservote');
 	  }, function error(response){
 	    console.log('error',response);
