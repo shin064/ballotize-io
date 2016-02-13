@@ -6,8 +6,8 @@
         type="text"
         class="form-control"
         ng-model="ballotcreation.topic" />
-      <ul ng-repeat="(key,value) in ballotcreation.options">
-        <li>
+      <ul>
+        <li ng-repeat="(key,value) in ballotcreation.options">
           Option {{key}}:
           <input
           type="text"
