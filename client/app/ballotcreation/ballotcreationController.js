@@ -10,9 +10,8 @@ ballotcreation.controller('ballotcreationController',  ['$scope', '$http', '$sta
 	}
 
 	ctrl.remove = function(){
-	  delete ctrl.options[ctrl.counter--];
-	  if(ctrl.counter < 0){
-	    ctrl.counter = 0;
+	  if(ctrl.counter > 2){
+      delete ctrl.options[ctrl.counter--];
 	  }
 	}
 
@@ -24,10 +23,10 @@ ballotcreation.controller('ballotcreationController',  ['$scope', '$http', '$sta
 	};
 
 	ctrl.reset = function() {
-		ctrl.master = {1: ''};
+		ctrl.master = {1: '', 2: ''};
 	  ctrl.options = angular.copy(ctrl.master);
 	  ctrl.topic = '';
-	  ctrl.counter = 1;
+	  ctrl.counter = 2;
 	};
 
 	ctrl.reset();
