@@ -3,7 +3,6 @@ var mongoose = require('mongoose');
 
 var db = {};
 
-
 //******DATABASE SET UP
 
 db.dbURI = 'mongodb://localhost/ballotize';
