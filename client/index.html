@@ -9,18 +9,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./static/styles/main.css">
 
-    <script src="./../node_modules/socket.io/node_modules/socket.io-client/socket.io.js"></script>
+    <!-- <script src="./../node_modules/socket.io/node_modules/socket.io-client/socket.io.js"></script> -->
+    <script src="http://localhost:8080/socket.io/socket.io.js"></script>
+
   </head>
   <body>
     <div ui-view></div>
-
-    <script>
-      var socket = io('http://localhost:8080');
-      socket.on('news', function (data) {
-        console.log(data);
-        socket.emit('my other event', { my: 'data' });
-      });
-    </script>
 
     <!-- Styling -->
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -38,6 +32,7 @@
     <script src='./app/index.js'></script>
 
     <!-- Factories -->
+    <script src='./app/_services/socketFactory.js'></script>
     <script src='./app/_services/userFactory.js'></script>
     <script src='./app/_services/ballotFactory.js'></script>
 
