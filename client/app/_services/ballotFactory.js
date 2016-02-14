@@ -1,6 +1,6 @@
 var Ballotize = angular.module('Ballotize');
 
-Ballotize.factory('Ballot', ['$http', '$state', 'User', function($http, $state, User){
+Ballotize.factory('Ballot', ['$http', '$state', 'User', 'Socket', function($http, $state, User, Socket){
   var currentBallot = {};
 
   var createBallot = function(ballotInfo){
@@ -50,23 +50,11 @@ Ballotize.factory('Ballot', ['$http', '$state', 'User', function($http, $state, 
   }
 
   var voteBallot = function(username, roomcode, choiceKey){
-    console.log('in vote ballot', arguments);
+    Socket.emit('new vote', {code: roomcode, username: username, choice: choiceKey});
+    Socket.on('vote saved', function(data){
+      setBallot(data);
+    })
     $state.go('results');
-
-    $http({
-      method: 'POST',
-      url: '/vote',
-      data: {
-        code: roomcode,
-        username: username,
-        choice: choiceKey
-      }
-    }).then(function success(response){
-      console.log('success',response);
-      $state.go('results');
-    }, function error(response){
-      console.log('error',response);
-    });
   }
 
   return {
