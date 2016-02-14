@@ -18,6 +18,6 @@ landingpage.controller('landingpageController', ['$scope', 'User', 'Ballot', 'So
 
   Socket.on('news', function (data) {
     console.log(data);
-    Socket.emit('my other event', { my: ctrl.username });
+    Socket.emit('my other event', { my: 'hello' });
   });
 }]);
