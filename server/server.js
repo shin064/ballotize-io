@@ -7,8 +7,6 @@ var db = require('./db.js');
 var port = process.env.PORT || 8080;
 var handleNewVote = require('./functions/handleNewVote');
 
-//module.exports = {app:app, io:io};
-
 server.listen(port, function(){
   console.log('listening on port ' + port);
 });
@@ -33,8 +31,7 @@ io.on('connection', function (socket) {
     console.log(data);
   });
   socket.on('new vote',function(data){
-    console.log('new vote: ',data);
-    handleNewVote(data);
+    handleNewVote(data,socket);
   })
 });
 
@@ -68,4 +65,6 @@ app.get('/countVotes' , function (req, res) {
   var counted = countVotes(data);
 
   res.json(counted);
-})
+});
+
+module.exports = io;
