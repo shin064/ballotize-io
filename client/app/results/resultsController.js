@@ -10,7 +10,12 @@ results.controller('resultsController', ['$scope', 'Ballot', 'User', 'socket', f
   ctrl.voters = ballot.voters;
   ctrl.isOwner = User.isOwner;
   ctrl.roomcode = ballot.roomcode;
-  ctrl.endVote = Ballot.endVote;
+  ctrl.done = ballot.done;
+
+  ctrl.endVote = function(roomcode){
+    socket.emit('endVote', ballot);
+    Ballot.endVote(roomcode);
+  }
 
   socket.emit('subscribe', ballot.roomcode);
   socket.emit('newVote', ballot);
@@ -21,5 +26,9 @@ results.controller('resultsController', ['$scope', 'Ballot', 'User', 'socket', f
     ctrl.tally = data.results;
     ctrl.voters = data.voters;
   });
+
+  socket.on('endVote', function(data){
+    ctrl.done = true;
+  })
 
 }]);

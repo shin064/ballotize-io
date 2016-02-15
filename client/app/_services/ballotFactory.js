@@ -73,7 +73,9 @@ Ballotize.factory('Ballot', ['$http', '$state', 'User', function($http, $state, 
       url: '/endvote',
       data: {roomcode: roomcode}
     }).then(function success(response){
-      console.log('success',response)
+      console.log('success',response);
+      setBallot(response.data);
+
     }, function error(response){
       console.log('error',response);
     });

@@ -4,6 +4,7 @@ var db = require('../db');
 
 router.post('/',function(req,res){
 	var roomcode = req.body.roomcode;
+	console.log('inside endvote route, roomcode: ',roomcode);
 	db.Room.findOne({roomcode:roomcode},function(err,room){
 		room.done = true;
 		room.save(function(err,room){

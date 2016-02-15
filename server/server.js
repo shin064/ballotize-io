@@ -46,6 +46,10 @@ io.on('connection', function (socket) {
     io.sockets.in(data.roomcode).emit('newVote', data);
   });
 
+  socket.on('endVote', function(data){
+    io.sockets.in(data.roomcode).emit('endVote', data);
+  })
+
 });
 
 //for getting vote results
