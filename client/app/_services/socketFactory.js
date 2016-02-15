@@ -2,6 +2,7 @@ var Ballotize = angular.module('Ballotize');
 
 Ballotize.factory('socket', ['$state', '$rootScope', function($state, $rootScope){
   var socket = io.connect('http://localhost:8080');
+
   return {
     on: function (eventName, callback) {
       socket.on(eventName, function () {
@@ -22,5 +23,4 @@ Ballotize.factory('socket', ['$state', '$rootScope', function($state, $rootScope
       })
     }
   };
-  // return socket;
 }]);

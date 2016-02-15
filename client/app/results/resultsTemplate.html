@@ -1,11 +1,6 @@
 <div class="container">
   <div>
     <h1>{{ topic }}</h1>
-    <p ng-model="test">{{ test }}</p>
-    <form>
-      <input ng-model="input" />
-      <button  ng-click="send(input)"/>Submit</button>
-    </form>
     <ul>
       <li ng-repeat="votes in tally track by $index">
         Options: {{ options[$index] }}
