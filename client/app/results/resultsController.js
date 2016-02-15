@@ -3,7 +3,8 @@ var results = angular.module('results', []);
 results.controller('resultsController', ['$scope', 'Ballot', 'User', 'socket', function($scope, Ballot, User, socket){
   var ctrl = this;
   var ballot = Ballot.getBallot();
-  
+
+  ctrl.username = User.getUser();
   ctrl.topic = ballot.topic;
   ctrl.options = ballot.options;
   ctrl.tally = ballot.results;

@@ -1,7 +1,35 @@
 <div class="container">
+  <div class="panel-heading">
+    <div class="container-fluid">
+      <img
+      src="./../static/assets/ballotize_io.png"
+      alt="image"
+      class="center-block img-responsive logo">
+      <h1 class="logo-text">ballotize<span class="logo-span">.io</span></h1>
+      <p class="logo-headline">Instantaneous voting on anything</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="container">
+    <h1 class="main-header">Info</h1>
+    <p class="sub-directions">Code:</p>
+    <input type="text" class="form-control voter-info" ng-model="results.roomcode" readonly>
+  </div>
+
+  <hr>
+
+  <div class="container">
+    <p class="thanks-text">Thank you for voting {{ results.username }}!</p>
+    <p class="sub-directions">Please view the results in real-time, below.</p>
+  </div>
+
+  <hr>
+
   <div>
     <h1 ng-show="results.done">This vote has ended!</h1>
-    <h2>{{ results.topic }}</h2>
+    <h1 class="main-header">{{ results.topic }}</h1>
     <ul>
       <li ng-repeat="votes in results.tally track by $index">
         Option: {{ results.options[$index] }}
