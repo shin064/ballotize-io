@@ -10,6 +10,33 @@ body {
   background-color: transparent;
 }
 
+hr {
+  border-width: 2px;
+}
+
+.btn-add-remove {
+  margin: 10px;
+}
+
+.btn-reset-submit {
+}
+
+.form-horizontal .form-group {
+  margin-left: none;
+  margin-right: none;
+}
+
+.input-group {
+  margin: 20px;
+}
+
+.form-horzontal .input-choice {
+  width: 80%;
+  margin: 0 auto;
+  margin-left: none;
+  margin-right: none;
+}
+
 .logo {
   margin-: -4px
 }
@@ -35,5 +62,22 @@ body {
   font-family: Open Sans;
   font-size: 18px;
   color: black;
+  text-align: center;
+}
+
+.main-button {
+  padding: 20px 10px;
+  font-family: Open Sans;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.main-header {
+  font-family: Open Sans;
+  text-align: center;
+}
+
+.sub-header {
+  font-family: Open Sans;
   text-align: center;
 }

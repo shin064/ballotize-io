@@ -1,65 +1,66 @@
-<div class="container">
-
-  <div class="panel-heading">
-    <div class="container-fluid">
-      <img
-      src="./../static/assets/ballotize_io.png"
-      alt="image"
-      class="center-block img-responsive logo">
-      <h1 class="logo-text">Ballotize<span class="logo-span">.io</span></h1>
-      <p class="logo-headline">Instantaneous voting on anything</p>
+<div class="container-fluid">
+  <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+    <div class="panel-heading">
+      <div class="container-fluid">
+        <img
+        src="./../static/assets/ballotize_io.png"
+        alt="image"
+        class="center-block img-responsive logo">
+        <h1 class="logo-text">ballotize<span class="logo-span">.io</span></h1>
+        <p class="logo-headline">Instantaneous voting on anything</p>
+      </div>
     </div>
-  </div>
 
-  <div class="col-sm-12">
-    <h1>Join a Ballot</h1>
+    <div class="col-sm-12">
+      <h1 class="main-header">Join a Ballot</h1>
 
-    <form class="form-horizontal">
-      <div class="input-group">
-        <span class="input-group-addon">
-          <i class="glyphicon glyphicon-user"></i>
-        </span>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Name (optional)"
-          ng-model="username">
-      </div>
-      <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-ok"></i></span>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Enter Ballot Code"
-          ng-model="code">
-      </div>
-      <button
-        type="submit"
-        class="btn btn-md btn-success btn-block"
-        ng-click="landingpage.fetchRoom(username, code)">
-        Ready to Vote
-      </button>
-    </form>
-
-    <h1>Create a Ballot</h1>
       <form class="form-horizontal">
-      <div class="input-group">
-        <span class="input-group-addon">
-          <i class="glyphicon glyphicon-user"></i>
-        </span>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Name (optional)"
-          ng-model="owner">
-      </div>
-      <button
-        class="btn btn-md btn-success btn-block"
-        ui-sref="ballotcreation"
-        ng-click="landingpage.setInfo(owner)">
-        Create a Ballot
-      </button>
-    </form>
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="glyphicon glyphicon-user"></i>
+          </span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Name (optional)"
+            ng-model="username">
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-ok"></i></span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Ballot Code"
+            ng-model="code">
+        </div>
+        <button
+          type="submit"
+          class="btn btn-md btn-success btn-block main-button"
+          ng-click="landingpage.fetchRoom(username, code)">
+          Ready to Vote
+        </button>
+      </form>
+      <hr>
+      <h1 class="main-header">Create a Ballot</h1>
+        <form class="form-horizontal">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="glyphicon glyphicon-user"></i>
+          </span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Name (optional)"
+            ng-model="owner">
+        </div>
+        <button
+          class="btn btn-md btn-info btn-block main-button"
+          ui-sref="ballotcreation"
+          ng-click="landingpage.setInfo(owner)">
+          Create a Ballot
+        </button>
+      </form>
+    </div>
   </div>
 
 </div>
