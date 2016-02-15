@@ -1,9 +1,46 @@
 <div class="container">
-  <h2>Topic: {{ uservote.topic }}</h2>
-  <div class="form-group" ng-repeat="(key, option) in uservote.options">
-    <button class="btn btn-default btn-md btn-block" ng-click="uservote.selectChoice(key)">
-      {{option}}
-    </button>
+  <div class="panel-heading">
+    <div class="container-fluid">
+      <img
+      src="./../static/assets/ballotize_io.png"
+      alt="image"
+      class="center-block img-responsive logo">
+      <h1 class="logo-text">ballotize<span class="logo-span">.io</span></h1>
+      <p class="logo-headline">Instantaneous voting on anything</p>
+    </div>
   </div>
-  <button class="btn btn-success btn-md btn-block" ng-click="uservote.submitVote()">Make my vote count</button>
+
+  <hr>
+
+  <div class="container">
+    <h1 class="main-header">Info</h1>
+    <p class="sub-directions">Code:</p>
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i class="glyphicon glyphicon-paperclip"></i>
+      </span>
+      <input type="text" class="form-control voter-info" ng-model="uservote.roomcode" readonly>
+    </div>
+    <p class="sub-directions">You are voting as:</p>
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i class="glyphicon glyphicon-user"></i>
+      </span>
+      <input type="text" class="form-control" ng-model="uservote.username" readonly>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="container">
+    <h1 class="main-header">{{ uservote.topic }}</h1>
+    <p class="sub-directions">Select an option below and click 'Ballotize.it' to vote</p>
+    <div class="form-group" ng-repeat="(key, option) in uservote.options">
+      <button class="btn btn-default btn-md btn-block" ng-click="uservote.selectChoice(key)">
+        {{option}}
+      </button>
+    </div>
+    <button class="btn btn-success btn-md btn-block" ng-click="uservote.submitVote()">Ballotize.it</button>
+    <p class="sub-directions">{{ uservote.errorMsg }}</p>
+  </div>
 </div>

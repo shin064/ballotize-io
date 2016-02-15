@@ -6,9 +6,12 @@ uservote.controller('uservoteController', ['$scope', '$state', 'User', 'Ballot',
   var hasVoted = false;
   var currentChoice = null;
 
+  ctrl.username = User.getUser();
   ctrl.roomcode = ballot.roomcode;
+  ctrl.username = User.getUser();
   ctrl.topic = ballot.topic;
   ctrl.options = ballot.options;
+  ctrl.errorMsg = '';
 
   ctrl.selectChoice = function(choiceKey){
     currentChoice = choiceKey;
@@ -19,7 +22,7 @@ uservote.controller('uservoteController', ['$scope', '$state', 'User', 'Ballot',
     var roomCode = ctrl.roomcode;
 
     if(currentChoice === null){
-      console.log('please select a choice to vote for');
+      ctrl.errorMsg = 'Please select a choice before submitting';
     }
 
     if(!hasVoted && currentChoice !== null){
