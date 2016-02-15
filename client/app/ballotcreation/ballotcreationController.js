@@ -7,19 +7,20 @@ ballotcreation.controller('ballotcreationController',  ['$scope', '$http', '$sta
 
 	ctrl.add = function(){
 	  ctrl.options[++ctrl.counter] = '';
-	}
+	};
 
 	ctrl.remove = function(){
 	  if(ctrl.counter > 1){
       delete ctrl.options[ctrl.counter--];
 	  }
-	}
+	};
 
 	ctrl.submit = function() {
 	  ctrl.saved.topic = ctrl.topic;
 	  ctrl.saved.options = angular.copy(ctrl.options);
 	  ctrl.saved.username = User.getUser();
 	  Ballot.createBallot(ctrl.saved);
+	  User.makeOwner();
 	};
 
 	ctrl.reset = function() {

@@ -3,7 +3,15 @@ var Ballotize = angular.module('Ballotize');
 Ballotize.factory('User', [function(){
   var user = '';
   var code = '';
-  var isOwner = false;
+  var owner = false;
+
+  var makeOwner = function(){
+    owner = true;
+  }
+
+  var isOwner = function(){
+    return owner;
+  }
 
   var setUser = function(username){
     return user = username;
@@ -26,6 +34,7 @@ Ballotize.factory('User', [function(){
     getUser: getUser,
     setCode: setCode,
     getCode: getCode,
+    makeOwner: makeOwner,
     isOwner: isOwner
   }
 }]);

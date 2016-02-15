@@ -1,6 +1,6 @@
 var results = angular.module('results', []);
 
-results.controller('resultsController', ['$scope', 'Ballot', 'socket', function($scope, Ballot, socket){
+results.controller('resultsController', ['$scope', 'Ballot', 'User', 'socket', function($scope, Ballot, User, socket){
   var ctrl = this;
   var ballot = Ballot.getBallot();
   
@@ -8,6 +8,7 @@ results.controller('resultsController', ['$scope', 'Ballot', 'socket', function(
   ctrl.options = ballot.options;
   ctrl.tally = ballot.results;
   ctrl.voters = ballot.voters;
+  ctrl.isOwner = User.isOwner;
 
   socket.emit('subscribe', ballot.roomcode);
   socket.emit('newVote', ballot);
