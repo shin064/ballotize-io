@@ -1,21 +1,22 @@
 var results = angular.module('results', []);
 
 results.controller('resultsController', ['$scope', 'Ballot', 'socket', function($scope, Ballot, socket){
+  var ctrl = this;
   var ballot = Ballot.getBallot();
-
-  $scope.topic = ballot.topic;
-  $scope.options = ballot.options;
-  $scope.tally = ballot.results;
-  $scope.voters = ballot.voters;
+  
+  ctrl.topic = ballot.topic;
+  ctrl.options = ballot.options;
+  ctrl.tally = ballot.results;
+  ctrl.voters = ballot.voters;
 
   socket.emit('subscribe', ballot.roomcode);
   socket.emit('newVote', ballot);
 
   socket.on('newVote', function(data){
-    $scope.topic = data.topic;
-    $scope.options = data.options;
-    $scope.tally = data.results;
-    $scope.voters = data.voters;
+    ctrl.topic = data.topic;
+    ctrl.options = data.options;
+    ctrl.tally = data.results;
+    ctrl.voters = data.voters;
   });
 
 }]);

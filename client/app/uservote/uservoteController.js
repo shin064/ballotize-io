@@ -1,6 +1,6 @@
 var uservote = angular.module('uservote', []);
 
-uservote.controller('uservoteController', ['$scope', '$state', 'User', 'Ballot', function($scope, $state, User, Ballot){
+uservote.controller('uservoteController', ['$scope', '$state', 'User', 'Ballot', 'socket', function($scope, $state, User, Ballot, socket){
   var ctrl = this;
   var ballot = Ballot.getBallot();
   var hasVoted = false;
