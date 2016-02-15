@@ -9,7 +9,9 @@ router.post('/',function(req,res){
 
 	db.Room.findOne({roomcode:roomcode},function(err,room){
 		room.voters[votername]=choice;
-		room.results[choice]++;
+		if (!room.done){
+			room.results[choice]++;
+		}
 		room.markModified('voters');
 		room.markModified('results');
 
