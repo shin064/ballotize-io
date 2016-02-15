@@ -33,6 +33,5 @@ Ballotize.config(function($stateProvider, $urlRouterProvider) {
       url: '/results',
       templateUrl: 'app/results/resultsTemplate.html',
       controller: 'resultsController',
-      controllerAs: 'results'
     });
 });

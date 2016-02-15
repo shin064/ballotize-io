@@ -24,6 +24,7 @@ uservote.controller('uservoteController', ['$scope', '$state', 'User', 'Ballot',
 
     if(!hasVoted && currentChoice !== null){
       Ballot.voteBallot(user, roomCode, currentChoice);
+      hasVoted = true;
     }
   }
 }]);

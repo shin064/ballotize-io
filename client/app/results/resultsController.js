@@ -1,26 +1,35 @@
 var results = angular.module('results', []);
 
-results.controller('resultsController', ['$scope', 'Ballot', 'Socket', function($scope, Ballot, Socket){
-  var ctrl = this;
+results.controller('resultsController', ['$scope', 'Ballot', 'socket', function($scope, Ballot, socket){
+  // var socket = io.connect('http://localhost:8080');
   var ballot = Ballot.getBallot();
 
-  ctrl.topic = ballot.topic;
-  ctrl.options = ballot.options;
-  ctrl.tally = ballot.results;
-  ctrl.voters = ballot.voters;
+  $scope.test = '';
+  $scope.input = '';
+  $scope.topic = ballot.topic;
+  $scope.options = ballot.options;
+  $scope.tally = ballot.results;
+  $scope.voters = ballot.voters;
 
   console.log('ballot results', ballot);
 
-  // Socket.on('vote saved', function (data) {
-  //   console.log('data back from socket', data);
-  //   // ballot = data;
-  //   ctrl.topic = data.topic;
-  //   ctrl.options = data.options;
-  //   ctrl.results = data.results;
-  //   ctrl.voters = data.voters;
-  //
-  //   console.log('scope', ctrl);
-  // });
+  $scope.send = function(input){
+    socket.emit('new:vote', input);
+  }
+
+  socket.on('new:vote', function (data) {
+    console.log('data back from socket', data);
+    $scope.test = data;
+    // ballot = data;
+    // $scope.$apply(function(){
+    //   $scope.topic = data.topic;
+    //   $scope.options = data.options;
+    //   $scope.results = data.results;
+    //   $scope.voters = data.voters;
+    //   console.log('scope', ctrl);
+    // });
+
+  });
 
 
 }]);

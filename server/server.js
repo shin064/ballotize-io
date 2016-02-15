@@ -26,13 +26,20 @@ app.use('/vote', require('./routes/vote_route'));
 
 
 io.on('connection', function (socket) {
+  console.log('a user connected');
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
   socket.emit('news', { sockets: 'work' });
   socket.on('my other event', function (data) {
     console.log(data);
   });
-  socket.on('new vote',function(data){
-    handleNewVote(data,socket);
-  })
+  socket.on('new:vote', function(data){
+    console.log('new:vote, sup', data);
+    io.emit('new:vote', data);
+    // socket.emit('vote saved')
+    // handleNewVote(data,socket);
+  });
 });
 
 //for getting vote results

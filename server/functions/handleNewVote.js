@@ -16,7 +16,6 @@ module.exports = function(data,socket){
 		room.markModified('results');
 
 		room.save(function(err,room){
-			console.log('room saved: ', room);
 			socket.emit('vote saved', room);
 		})
 	})
