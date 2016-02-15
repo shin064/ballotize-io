@@ -12,14 +12,20 @@ router.get('/',function(req,res){
 			res.send(err);
 		}
 		else {
-			if (!room.voters) {
-				room.voters = {};
+			if (room === null){
+				console.log('no such room');
+				res.json('no room with that roomcode');
 			}
-			room.voters[username]=false;
-			room.markModified('voters');
-			room.save(function(err,room){
-				res.json(room);
-			})
+			else {
+				if (!room.voters) {
+					room.voters = {};
+				}
+				room.voters[username]=false;
+				room.markModified('voters');
+				room.save(function(err,room){
+					res.json(room);
+				})
+			}
 		}
 	});
 })
