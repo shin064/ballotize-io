@@ -50,9 +50,6 @@ Ballotize.factory('Ballot', ['$http', '$state', 'User', function($http, $state, 
   }
 
   var voteBallot = function(username, roomcode, choiceKey){
-    console.log('in vote ballot', arguments);
-    $state.go('results');
-
     $http({
       method: 'POST',
       url: '/vote',
@@ -62,7 +59,7 @@ Ballotize.factory('Ballot', ['$http', '$state', 'User', function($http, $state, 
         choice: choiceKey
       }
     }).then(function success(response){
-      console.log('success',response);
+      setBallot(response.data);
       $state.go('results');
     }, function error(response){
       console.log('error',response);

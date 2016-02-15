@@ -11,12 +11,11 @@ module.exports = function(data,socket){
 
 	db.Room.findOne({roomcode:roomcode},function(err,room){
 		room.voters[votername]=choice;
-		room.results[choice-1]++;
+		room.results[choice]++;
 		room.markModified('voters');
 		room.markModified('results');
 
 		room.save(function(err,room){
-			console.log('room saved: ',room);
 			socket.emit('vote saved', room);
 		})
 	})

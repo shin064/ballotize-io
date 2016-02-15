@@ -3,8 +3,6 @@ var router = express.Router();
 var db = require('../db');
 
 router.get('/',function(req,res){
-	console.log('GET request to /ballot route');
-	console.log(req.query);
 	var roomcode = Number(req.query.code);
 	var username = req.query.username;
 
@@ -14,7 +12,6 @@ router.get('/',function(req,res){
 			res.send(err);
 		}
 		else {
-			console.log('found room: ',room);
 			if (!room.voters) {
 				room.voters = {};
 			}
@@ -28,7 +25,6 @@ router.get('/',function(req,res){
 })
 
 router.post('/',function(req,res){
-	console.log('POST request to /ballot route');
 
 	var topic = req.body.topic;
 	var options = req.body.options;
@@ -39,7 +35,6 @@ router.post('/',function(req,res){
 		results.push(0);
 	}
 
-	console.log('results',results);
 
 	var roomcode = Math.floor(Math.random()*9000)+1000;
 
@@ -62,7 +57,6 @@ router.post('/',function(req,res){
 			console.log('error saving room: ',err);
 			res.send(err);
 		}
-		console.log('room was saved:',savedRoom)
 		res.json(savedRoom);
 	})
 });

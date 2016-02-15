@@ -26,13 +26,25 @@ app.use('/vote', require('./routes/vote_route'));
 
 
 io.on('connection', function (socket) {
-  socket.emit('news', { sockets: 'work' });
-  socket.on('my other event', function (data) {
-    console.log(data);
+  console.log('a user connected');
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
   });
-  socket.on('new vote',function(data){
-    handleNewVote(data,socket);
+
+  socket.on('subscribe', function(room){
+    console.log('joining in', room);
+    socket.join(room);
   })
+
+  socket.on('unsubscribe', function(room){
+    console.log('joining in', room);
+    socket.leave(room);
+  })
+
+  socket.on('newVote', function(data){
+    io.sockets.in(data.roomcode).emit('newVote', data);
+  });
+
 });
 
 //for getting vote results

@@ -5,3 +5,35 @@ html {
   background-attachment:fixed;
   background-size: cover;
 }
+
+body {
+  background-color: transparent;
+}
+
+.logo {
+  margin-: -4px
+}
+
+.logo-text {
+  font-family: Brush Script MT;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: 003399;
+  text-align: center;
+  font-size: 50px;
+  text-padding: 0;
+}
+
+.logo-span {
+  font-family: Open Sans;
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.logo-headline {
+  font-family: Open Sans;
+  font-size: 18px;
+  color: black;
+  text-align: center;
+}
