@@ -15,20 +15,34 @@
   <div class="container">
     <h1 class="main-header">Info</h1>
     <p class="sub-directions">Code:</p>
-    <input type="text" class="form-control voter-info" ng-model="results.roomcode" readonly>
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i class="glyphicon glyphicon-paperclip"></i>
+      </span>
+      <input type="text" class="form-control voter-info" ng-model="results.roomcode" readonly>
+    </div>
   </div>
 
   <hr>
 
   <div class="container">
-    <p class="thanks-text">Thank you for voting {{ results.username }}!</p>
-    <p class="sub-directions">Please view the results in real-time, below.</p>
+    <form class="form-horizontal">
+      <p class="thanks-text">Thank you for voting {{ results.username }}!</p>
+      <p class="sub-directions" ng-show="!results.done">Please view the results in real-time, below.</p>
+      <button
+      class="btn btn-md btn-danger btn-block main-button"
+      ng-show="results.isOwner() && !results.done"
+      ng-click="results.endVote(results.roomcode)">
+      End vote
+      </button>
+    </form>
   </div>
 
   <hr>
 
   <div>
-    <h1 ng-show="results.done">This vote has ended!</h1>
+    <h1 class="main-header" ng-show="results.done">This vote has ended!</h1>
+    <p class="sub-directions" ng-show="results.done">Below are the results:</p>
     <h1 class="main-header">{{ results.topic }}</h1>
     <ul>
       <li ng-repeat="votes in results.tally track by $index">
@@ -37,9 +51,6 @@
       </li>
     </ul>
 
-    <button ng-show="results.isOwner() && !results.done" ng-click="results.endVote(results.roomcode)">End vote</button>
 
-    <pre>voting done? {{results.done}}</pre>
-    <pre>is Owner? {{results.isOwner()}}</pre>
   </div>
 </div>

@@ -34,7 +34,7 @@
 
   <div class="container">
     <h1 class="main-header">{{ uservote.topic }}</h1>
-    <p class="sub-directions">Select an option below and click 'Ballotize.it'</p>
+    <p class="sub-directions">Select an option below and click 'Ballotize.it' to vote</p>
     <div class="form-group" ng-repeat="(key, option) in uservote.options">
       <button class="btn btn-default btn-md btn-block" ng-click="uservote.selectChoice(key)">
         {{option}}
