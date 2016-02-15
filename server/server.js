@@ -23,6 +23,7 @@ app.use(bodyParser.json());
 //routes
 app.use('/ballot', require('./routes/ballot_route'));
 app.use('/vote', require('./routes/vote_route'));
+app.use('/endvote', require('./routes/endvote_route'));
 
 
 io.on('connection', function (socket) {

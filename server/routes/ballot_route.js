@@ -49,7 +49,8 @@ router.post('/',function(req,res){
 		topic:topic,
 		options:options,
 		owner:owner,
-		results:results
+		results:results,
+		done:false
 	});
 
 	room.voters = {};

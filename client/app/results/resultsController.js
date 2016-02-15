@@ -9,6 +9,8 @@ results.controller('resultsController', ['$scope', 'Ballot', 'User', 'socket', f
   ctrl.tally = ballot.results;
   ctrl.voters = ballot.voters;
   ctrl.isOwner = User.isOwner;
+  ctrl.roomcode = ballot.roomcode;
+  ctrl.endVote = Ballot.endVote;
 
   socket.emit('subscribe', ballot.roomcode);
   socket.emit('newVote', ballot);
