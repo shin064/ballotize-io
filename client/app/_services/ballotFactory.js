@@ -16,7 +16,7 @@ Ballotize.factory('Ballot', ['$http', '$state', 'User', function($http, $state, 
 	  }, function error(response){
 	    console.log('error',response);
 	  });
-  }
+  };
 
   var fetchBallot = function(input, username){
     $http({
@@ -38,16 +38,16 @@ Ballotize.factory('Ballot', ['$http', '$state', 'User', function($http, $state, 
     }, function error(response){
       console.log('error',response);
     });
-  }
+  };
 
   var setBallot = function(ballot){
     currentBallot = ballot;
     return currentBallot;
-  }
+  };
 
   var getBallot = function(){
     return currentBallot;
-  }
+  };
 
   var voteBallot = function(username, roomcode, choiceKey){
     $http({
@@ -64,13 +64,29 @@ Ballotize.factory('Ballot', ['$http', '$state', 'User', function($http, $state, 
     }, function error(response){
       console.log('error',response);
     });
-  }
+  };
+
+  var endVote = function(roomcode){
+    console.log('endVote called with roomcode: ',roomcode);
+    $http({
+      method: 'POST',
+      url: '/endvote',
+      data: {roomcode: roomcode}
+    }).then(function success(response){
+      console.log('success',response);
+      setBallot(response.data);
+
+    }, function error(response){
+      console.log('error',response);
+    });
+  };
 
   return {
     createBallot: createBallot,
     fetchBallot: fetchBallot,
     setBallot: setBallot,
     getBallot: getBallot,
-    voteBallot: voteBallot
+    voteBallot: voteBallot,
+    endVote: endVote
   }
 }]);

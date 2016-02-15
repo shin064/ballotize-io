@@ -1,11 +1,17 @@
 <div class="container">
   <div>
-    <h1>{{ results.topic }}</h1>
+    <h1 ng-show="results.done">This vote has ended!</h1>
+    <h2>{{ results.topic }}</h2>
     <ul>
       <li ng-repeat="votes in results.tally track by $index">
-        Options: {{ results.options[$index] }}
+        Option: {{ results.options[$index] }}
         Votes: {{ votes }}
       </li>
     </ul>
+
+    <button ng-show="results.isOwner() && !results.done" ng-click="results.endVote(results.roomcode)">End vote</button>
+
+    <pre>voting done? {{results.done}}</pre>
+    <pre>is Owner? {{results.isOwner()}}</pre>
   </div>
 </div>
