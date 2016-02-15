@@ -10,6 +10,14 @@ body {
   background-color: transparent;
 }
 
+hr {
+  border-width: 2px;
+}
+
+.input-group {
+  margin: 20px;
+}
+
 .logo {
   margin-: -4px
 }
@@ -35,5 +43,10 @@ body {
   font-family: Open Sans;
   font-size: 18px;
   color: black;
+  text-align: center;
+}
+
+.main-header {
+  font-family: Open Sans;
   text-align: center;
 }
