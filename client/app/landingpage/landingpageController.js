@@ -15,9 +15,4 @@ landingpage.controller('landingpageController', ['$scope', 'User', 'Ballot', fun
   ctrl.setInfo = function(username){
     User.setUser(username);
   }
-
-  // Socket.on('news', function (data) {
-  //   console.log(data);
-  //   Socket.emit('my other event', { my: 'hello' });
-  // });
 }]);
