@@ -12,7 +12,7 @@
     </div>
 
     <div class="panel-body">
-      <h2 class="sub-header">Enter a topic</h2>
+      <h2 class="sub-header">1. Enter a topic</h2>
 
       <form novalidate class="form-horizontal">
         <div class="input-group">
@@ -28,7 +28,7 @@
 
         <hr>
 
-        <h2 class="sub-header">Enter the options</h2>
+        <h2 class="sub-header">2. Enter options to ballotize</h2>
         <div class="form-group input-group input-choice" ng-repeat="(key,value) in ballotcreation.options">
               <span class="input-group-addon">
                 <i class="glyphicon glyphicon-option-vertical"></i>
@@ -41,38 +41,36 @@
         </div>
 
         <div class="btn-group btn-group-justified" role="group">
-          <div class="btn-group">
+          <div class="btn-group" role="group">
             <button
               type="text"
-              class="btn btn-sm btn-info btn-block"
+              class="btn btn-sm btn-info btn-block btn-add-remove"
               ng-click="ballotcreation.add()">
-              Add a choice
+              Add
             </button>
           </div>
-          <div class="btn-group">
+          <div class="btn-group" role="group">
             <button
               type="text"
-              class="btn btn-sm btn-warning btn-block"
+              class="btn btn-sm btn-warning btn-block btn-add-remove"
               ng-click="ballotcreation.remove()">
-              Remove a choice
+              Remove
             </button>
           </div>
-          <div class="btn-group">
-            <button
-              type="text"
-              class="btn btn-sm btn-danger btn-block"
-              ng-click="ballotcreation.reset()">
-              Reset
-            </button>
-          </div>
-        <div class="btn-group">
-          <button
-            type="text"
-            class="btn btn-sm btn-success btn-block"
-            ng-click="ballotcreation.submit()">
-            Submit
-          </button>
         </div>
+
+        <button
+          type="text"
+          class="btn btn-md btn-danger btn-block"
+          ng-click="ballotcreation.reset()">
+          Reset Ballot
+        </button>
+        <button
+          type="text"
+          class="btn btn-md btn-success btn-block"
+          ng-click="ballotcreation.submit()">
+          Submit Ballot
+        </button>
       </div>
     </form>
   </div>
