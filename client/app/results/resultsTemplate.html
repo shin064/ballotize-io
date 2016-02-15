@@ -27,7 +27,7 @@
 
   <div class="container">
     <form class="form-horizontal">
-      <p class="thanks-text">Thank you for voting {{ results.username }}!</p>
+      <p class="thanks-text" ng-show="results.hasVoted">Thank you for voting {{ results.username }}!</p>
       <p class="sub-directions" ng-show="!results.done">Please view the results in real-time, below.</p>
       <button
       class="btn btn-md btn-danger btn-block main-button"
