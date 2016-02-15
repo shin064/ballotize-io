@@ -10,6 +10,8 @@ uservote.controller('uservoteController', ['$scope', '$state', 'User', 'Ballot',
   ctrl.topic = ballot.topic;
   ctrl.options = ballot.options;
 
+  console.log('inside uservote Controller');
+
   ctrl.selectChoice = function(choiceKey){
     currentChoice = choiceKey;
   }
