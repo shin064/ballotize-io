@@ -89,6 +89,12 @@ hr {
   font-size: 14px;
 }
 
+.thanks-text {
+  font-family: Open Sans;
+  font-size: 20px;
+  text-align: center;
+}
+
 .voter-info {
   margin: 20px;
 }
