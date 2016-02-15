@@ -54,7 +54,7 @@ hr {
 
 .logo-span {
   font-family: Open Sans;
-  font-size: 40px;
+  font-size: 32px;
   font-weight: 600;
 }
 
@@ -80,4 +80,15 @@ hr {
 .sub-header {
   font-family: Open Sans;
   text-align: center;
+}
+
+.sub-directions {
+  font-family: Open Sans;
+  text-align: center;
+  margin: 10px;
+  font-size: 14px;
+}
+
+.voter-info {
+  margin: 20px;
 }
