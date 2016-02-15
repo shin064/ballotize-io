@@ -8,6 +8,7 @@ results.controller('resultsController', ['$scope', 'Ballot', 'socket', function(
   $scope.tally = ballot.results;
   $scope.voters = ballot.voters;
 
+  socket.emit('subscribe', ballot.roomcode);
   socket.emit('newVote', ballot);
 
   socket.on('newVote', function(data){

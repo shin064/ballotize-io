@@ -31,9 +31,20 @@ io.on('connection', function (socket) {
     console.log('user disconnected');
   });
 
+  socket.on('subscribe', function(room){
+    console.log('joining in', room);
+    socket.join(room);
+  })
+
+  socket.on('unsubscribe', function(room){
+    console.log('joining in', room);
+    socket.leave(room);
+  })
+
   socket.on('newVote', function(data){
-    io.emit('newVote', data);
+    io.sockets.in(data.roomcode).emit('newVote', data);
   });
+
 });
 
 //for getting vote results
