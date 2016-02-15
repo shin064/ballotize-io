@@ -15,9 +15,19 @@
   <div class="container">
     <h1 class="main-header">Info</h1>
     <p class="sub-directions">Code:</p>
-    <input type="text" class="form-control voter-info" ng-model="uservote.roomcode" readonly>
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i class="glyphicon glyphicon-paperclip"></i>
+      </span>
+      <input type="text" class="form-control voter-info" ng-model="uservote.roomcode" readonly>
+    </div>
     <p class="sub-directions">You are voting as:</p>
-    <input type="text" class="form-control voter-info" ng-model="uservote.username" readonly>
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i class="glyphicon glyphicon-user"></i>
+      </span>
+      <input type="text" class="form-control" ng-model="uservote.username" readonly>
+    </div>
   </div>
 
   <hr>
