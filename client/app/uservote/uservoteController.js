@@ -7,8 +7,10 @@ uservote.controller('uservoteController', ['$scope', '$state', 'User', 'Ballot',
   var currentChoice = null;
 
   ctrl.roomcode = ballot.roomcode;
+  ctrl.username = User.getUser();
   ctrl.topic = ballot.topic;
   ctrl.options = ballot.options;
+  ctrl.errorMsg = '';
 
   console.log('inside uservote Controller');
 
@@ -21,7 +23,7 @@ uservote.controller('uservoteController', ['$scope', '$state', 'User', 'Ballot',
     var roomCode = ctrl.roomcode;
 
     if(currentChoice === null){
-      console.log('please select a choice to vote for');
+      ctrl.errorMsg = 'Please select a choice before submitting';
     }
 
     if(!hasVoted && currentChoice !== null){
