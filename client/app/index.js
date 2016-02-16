@@ -4,7 +4,8 @@ var Ballotize = angular.module('Ballotize', [
   'ballotcreation',
   'userrankvote',
   'uservote',
-  'results'
+  'results',
+  'resultsrank'
 ]);
 
 Ballotize.config(function($stateProvider, $urlRouterProvider) {
@@ -35,6 +36,12 @@ Ballotize.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'app/uservote/uservoteTemplate.html',
       controller: 'uservoteController',
       controllerAs: 'uservote'
+    })
+    .state('resultsrank', {
+      url: '/resultsrank',
+      templateUrl: 'app/resultsrank/resultsrankTemplate.html',
+      controller: 'resultsrankController',
+      controllerAs: 'resultsrank'
     })
     .state('results', {
       url: '/results',

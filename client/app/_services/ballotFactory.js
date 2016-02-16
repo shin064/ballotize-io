@@ -134,7 +134,7 @@ Ballotize.factory('Ballot', ['$http', '$state', 'User', 'socket', function($http
       }
     }).then(function success(response){
       setBallot(response.data);
-      $state.go('results');
+      $state.go('resultsrank');
     }, function error(response){
       console.log('error',response);
     });
