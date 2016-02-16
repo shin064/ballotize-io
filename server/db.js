@@ -12,10 +12,10 @@ db.roomSchema = new db.Schema ({
   roomcode: { type: Number, required: true},
   topic: { type: String },
   owner: { type: String },
-  options: {},
+  options: {}, //name of options
   numberOfWinners: { type: Number },
-  voters: {},
-  results: [],
+  voters: {}, //what each voter voted
+  results: [], //array of numbers
   done: { type: Boolean }
 }, {toJSON:{minimize:false}});
 //db.roomSchema.plugin(uniqueValidator);

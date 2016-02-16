@@ -17,9 +17,8 @@ router.post('/',function(req,res){
 
 		room.save(function(err,room){
 			res.json(room);
-		})
+		});
 	})
-
 })
 
 module.exports = router;

@@ -18,6 +18,11 @@ uservote.controller('uservoteController', ['$scope', '$state', 'User', 'Ballot',
   }
 
   ctrl.selectChoice = function(choiceKey){
+    var info = {
+      username:ctrl.username,
+      roomcode:ctrl.roomcode,
+    }
+    socket.emit('selecting',info);
     currentChoice = choiceKey;
   }
 
