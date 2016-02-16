@@ -1,8 +1,8 @@
 <div class="container">
   <h2>Topic: {{ userrankvote.topic }}</h2>
+  <h5>Rank choices by order of preference (i.e., 1 being most preferred)</h5>
   <div class="form-group" ng-repeat="(key, option) in userrankvote.rankedVotes">
-    {{option.name}}  <input text="number" name="{{option.name}}" ng-model="userrankvote.rankedVotes[key].vote" required/>
+    {{option.name}}  <input text="number" name="{{option.name}}" ng-model="userrankvote.rankedVotes[key].vote" placeholder="enter ranking here" required/>
   </div>
   <button class="btn btn-success btn-md btn-block" ng-click="userrankvote.submitVote()">Make my vote count</button>
-  {{userrankvote.rankedVotes}}
 </div>
