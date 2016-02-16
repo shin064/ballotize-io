@@ -19,30 +19,29 @@
       <span class="input-group-addon">
         <i class="glyphicon glyphicon-paperclip"></i>
       </span>
-      <input type="text" class="form-control voter-info" ng-model="uservote.roomcode" readonly>
+      <input type="text" class="form-control voter-info" ng-model="userrankvote.roomcode" readonly>
     </div>
     <p class="sub-directions">You are voting as:</p>
     <div class="input-group">
       <span class="input-group-addon">
         <i class="glyphicon glyphicon-user"></i>
       </span>
-      <input type="text" class="form-control" ng-model="uservote.username" readonly>
+      <input type="text" class="form-control" ng-model="userrankvote.username" readonly>
     </div>
   </div>
 
   <hr>
 
   <div class="container">
-    <h1 class="main-header">{{ uservote.topic }}</h1>
-    <p class="sub-directions">Select an option below and click 'Ballotize.it' to vote</p>
-    <div class="form-group" ng-repeat="(key, option) in uservote.options">
-      <button class="btn btn-default btn-md btn-block" ng-click="uservote.selectChoice(key)">
-        {{option}}
-      </button>
+    <h1 class="main-header">{{ userrankvote.topic }}</h1>
+    <p class="sub-directions">Rank options below by order of preference (i.e., 1 being most preferred) and click 'Ballotize.it' to vote</p>
+    <div class="form-group" ng-repeat="(key, option) in userrankvote.rankedVotes">
+      <div style='text-align: center'>
+        {{option.name}}  
+        <input text="number" name="{{option.name}}" ng-model="userrankvote.rankedVotes[key].vote" placeholder="enter ranking here" required/>
+      </div>
     </div>
-    <button class="btn btn-success btn-md btn-block" ng-click="uservote.submitVote()">Ballotize.it</button>
-    <p class="sub-directions">{{ uservote.errorMsg }}</p>
+    <button class="btn btn-success btn-md btn-block" ng-click="userrankvote.submitVote()">Ballotize.it</button>
+    <p class="sub-directions">{{ userrankvote.errorMsg }}</p>
   </div>
 </div>
-
- 

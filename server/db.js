@@ -13,6 +13,7 @@ db.roomSchema = new db.Schema ({
   topic: { type: String },
   owner: { type: String },
   options: {},
+  ballotType: { type: String },
   numberOfWinners: { type: Number },
   voters: {},
   results: [],
