@@ -8,7 +8,6 @@ uservote.controller('uservoteController', ['$scope', '$state', 'User', 'Ballot',
 
   ctrl.username = User.getUser();
   ctrl.roomcode = ballot.roomcode;
-  ctrl.username = User.getUser();
   ctrl.topic = ballot.topic;
   ctrl.options = ballot.options;
   ctrl.errorMsg = '';
@@ -32,6 +31,7 @@ uservote.controller('uservoteController', ['$scope', '$state', 'User', 'Ballot',
 
     if(!hasVoted && currentChoice !== null){
       Ballot.voteBallot(user, roomCode, currentChoice);
+      User.markVoted();
       hasVoted = true;
     }
   }

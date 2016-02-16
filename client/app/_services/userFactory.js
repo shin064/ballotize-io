@@ -4,6 +4,7 @@ Ballotize.factory('User', [function(){
   var user = '';
   var code = '';
   var owner = false;
+  var voted = false;
 
   var makeOwner = function(){
     owner = true;
@@ -29,12 +30,22 @@ Ballotize.factory('User', [function(){
     return code;
   }
 
+  var markVoted = function(){
+    voted = true;
+  };
+
+  var hasVoted = function(){
+    return voted;
+  }
+
   return {
     setUser: setUser,
     getUser: getUser,
     setCode: setCode,
     getCode: getCode,
     makeOwner: makeOwner,
-    isOwner: isOwner
+    isOwner: isOwner,
+    markVoted: markVoted,
+    hasVoted: hasVoted
   }
 }]);
