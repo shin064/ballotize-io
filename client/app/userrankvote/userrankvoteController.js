@@ -1,6 +1,6 @@
-var uservote = angular.module('userrankvote', []);
+var userrankvote = angular.module('userrankvote', []);
 
-uservote.controller('userrankvoteController', ['$scope', '$state', 'User', 'Ballot', 'socket', function($scope, $state, User, Ballot, socket){
+userrankvote.controller('userrankvoteController', ['$scope', '$state', 'User', 'Ballot', 'socket', function($scope, $state, User, Ballot, socket){
   var ctrl = this;
   var ballot = Ballot.getBallot();
   var hasVoted = false;
@@ -12,9 +12,9 @@ uservote.controller('userrankvoteController', ['$scope', '$state', 'User', 'Ball
   ctrl.options = ballot.options;
   ctrl.errorMsg = '';
 
-  console.log('inside uservote Controller');
+  console.log('inside userrankvote Controller');
   if (ballot.done){
-    $state.go('results');
+    $state.go('resultsrank');
   }
   ctrl.results = ballot.results;
 
