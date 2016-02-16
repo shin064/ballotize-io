@@ -40,6 +40,27 @@ Ballotize.factory('Ballot', ['$http', '$state', 'User', function($http, $state, 
     });
   };
 
+  var fetchResults = function(input){
+    $http({
+      method: 'GET',
+      url: '/ballot',
+      params: {
+        code: input
+      }
+    }).then(function success(response){
+      if(response.data.name === 'CastError'){
+        //TODO: error handle
+        console.log('enter a valid code')
+      } else {
+        console.log(response.data);
+        setBallot(response.data);
+        $state.go('results');
+      }
+    }, function error(response){
+      console.log('error',response);
+    });
+  }
+
   var setBallot = function(ballot){
     currentBallot = ballot;
     return currentBallot;
@@ -84,6 +105,7 @@ Ballotize.factory('Ballot', ['$http', '$state', 'User', function($http, $state, 
   return {
     createBallot: createBallot,
     fetchBallot: fetchBallot,
+    fetchResults: fetchResults,
     setBallot: setBallot,
     getBallot: getBallot,
     voteBallot: voteBallot,

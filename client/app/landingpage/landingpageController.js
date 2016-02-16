@@ -5,6 +5,15 @@ landingpage.controller('landingpageController', ['$scope', 'User', 'Ballot', fun
 
   ctrl.username = '';
   ctrl.code = '';
+  ctrl.codeResults = '';
+
+  ctrl.setInfo = function(username){
+    if(username){
+      User.setUser(username);
+    } else {
+      User.setUser('ReactIsBetterThanAngular' + Math.floor((Math.random()*100)+100));
+    }
+  }
 
   ctrl.fetchRoom = function(username, code){
     if(username){
@@ -19,11 +28,10 @@ landingpage.controller('landingpageController', ['$scope', 'User', 'Ballot', fun
     Ballot.fetchBallot(code, user);
   }
 
-  ctrl.setInfo = function(username){
-    if(username){
-      User.setUser(username);
-    } else {
-      User.setUser('ReactIsBetterThanAngular' + Math.floor((Math.random()*100)+100));
-    }
+  ctrl.fetchResults = function(code){
+    User.setCode(code);
+
+    Ballot.fetchResults(code);
   }
+
 }]);
