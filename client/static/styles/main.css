@@ -27,12 +27,11 @@ hr {
 }
 
 .input-group {
-  margin: 20px;
+  margin-bottom: 20px;
 }
 
 .form-horzontal .input-choice {
   width: 80%;
-  margin: 0 auto;
   margin-left: none;
   margin-right: none;
 }

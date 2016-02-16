@@ -12,35 +12,6 @@
     </div>
 
     <div class="col-sm-12">
-      <h1 class="main-header">Join a Ballot</h1>
-
-      <form class="form-horizontal">
-        <div class="input-group">
-          <span class="input-group-addon">
-            <i class="glyphicon glyphicon-user"></i>
-          </span>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Name (optional)"
-            ng-model="username">
-        </div>
-        <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-ok"></i></span>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Enter Ballot Code"
-            ng-model="code">
-        </div>
-        <button
-          type="submit"
-          class="btn btn-md btn-success btn-block main-button"
-          ng-click="landingpage.fetchRoom(username, code)">
-          Ready to Vote
-        </button>
-      </form>
-      <hr>
       <h1 class="main-header">Create a Ballot</h1>
         <form class="form-horizontal">
         <div class="input-group">
@@ -58,6 +29,58 @@
           ui-sref="ballotcreation"
           ng-click="landingpage.setInfo(owner)">
           Create a Ballot
+        </button>
+      </form>
+
+      <hr>
+
+      <h1 class="main-header">Join a Ballot</h1>
+      <form class="form-horizontal">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="glyphicon glyphicon-user"></i>
+          </span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Name (optional)"
+            ng-model="username">
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-ok"></i></span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Room Code"
+            ng-model="code">
+        </div>
+        <button
+          type="submit"
+          class="btn btn-md btn-success btn-block main-button"
+          ng-click="landingpage.fetchRoom(username, code)">
+          Ready to Vote
+        </button>
+      </form>
+
+      <hr>
+
+      <h1 class="main-header">View Results</h1>
+      <form class="form-horizontal">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="glyphicon glyphicon-ok"></i>
+          </span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Room Code"
+            ng-model="codeResults">
+        </div>
+        <button
+          type="submit"
+          class="btn btn-md btn-success btn-block main-button"
+          ng-click="landingpage.fetchResults(codeResults)">
+          Show me the Results
         </button>
       </form>
     </div>
