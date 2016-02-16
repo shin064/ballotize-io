@@ -6,6 +6,7 @@ var io = require('socket.io')(server);
 var db = require('./db.js');
 var port = process.env.PORT || 8080;
 var handleNewVote = require('./functions/handleNewVote');
+var removeUser = require('./functions/removeUser');
 
 server.listen(port, function(){
   console.log('listening on port ' + port);
@@ -27,15 +28,21 @@ app.use('/endvote', require('./routes/endvote_route'));
 
 
 io.on('connection', function (socket) {
+  var username = '';
+  var roomcode;
   console.log('a user connected');
 
   socket.on('disconnect', function(){
-    console.log('user disconnected');
+    console.log('user disconnected: ',username);
+    removeUser(username,roomcode,io);
+    //socket.emit('clientDisconnect',username);
   });
 
-  socket.on('subscribe', function(room){
-    console.log('joining in', room);
-    socket.join(room);
+  socket.on('subscribe', function(data){
+    console.log('joining in', data.roomcode);
+    username=data.username;
+    roomcode=data.roomcode;
+    socket.join(data.roomcode);
   })
 
   socket.on('unsubscribe', function(room){

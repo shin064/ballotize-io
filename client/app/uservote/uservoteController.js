@@ -12,12 +12,18 @@ uservote.controller('uservoteController', ['$scope', '$state', 'User', 'Ballot',
   ctrl.options = ballot.options;
   ctrl.errorMsg = '';
 
-  console.log('inside uservote Controller');
+  socket.emit('subscribe',{roomcode:ctrl.roomcode,username:ctrl.username});
+
   if (ballot.done){
     $state.go('results');
   }
 
   ctrl.selectChoice = function(choiceKey){
+    var info = {
+      username:ctrl.username,
+      roomcode:ctrl.roomcode,
+    }
+    socket.emit('selecting',info);
     currentChoice = choiceKey;
   }
 

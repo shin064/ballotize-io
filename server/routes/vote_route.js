@@ -17,7 +17,7 @@ router.post('/',function(req,res){
 
 		room.save(function(err,room){
 			res.json(room);
-		})
+		});
 	})
 
 });
@@ -49,7 +49,6 @@ router.post('/rank', function(req,res){
 			res.json(room);
 		})
 	})
-
 })
 
 module.exports = router;

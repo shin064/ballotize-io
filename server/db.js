@@ -15,8 +15,8 @@ db.roomSchema = new db.Schema ({
   options: {},
   ballotType: { type: String },
   numberOfWinners: { type: Number },
-  voters: {},
-  results: [],
+  voters: {}, //what each voter voted
+  results: [], //array of numbers
   done: { type: Boolean }
 }, {toJSON:{minimize:false}});
 //db.roomSchema.plugin(uniqueValidator);
