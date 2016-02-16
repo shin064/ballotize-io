@@ -19,6 +19,7 @@ ballotcreation.controller('ballotcreationController',  ['$scope', '$http', '$sta
 	  ctrl.saved.topic = ctrl.topic;
 	  ctrl.saved.options = angular.copy(ctrl.options);
 	  ctrl.saved.username = User.getUser();
+	  ctrl.saved.ballotType = "nonranked";
 	  Ballot.createBallot(ctrl.saved);
 	  User.makeOwner();
 	};
@@ -27,6 +28,7 @@ ballotcreation.controller('ballotcreationController',  ['$scope', '$http', '$sta
 	  ctrl.saved.topic = ctrl.topic;
 	  ctrl.saved.options = angular.copy(ctrl.options);
 	  ctrl.saved.username = User.getUser();
+	  ctrl.saved.ballotType = "ranked";
 	  Ballot.createRankBallot(ctrl.saved);
 	  User.makeOwner();
 	};

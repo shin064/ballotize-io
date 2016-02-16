@@ -37,6 +37,8 @@ router.post('/',function(req,res){
 	var topic = req.body.topic;
 	var options = req.body.options;
 	var owner = req.body.username;
+	var ballotType = req.body.ballotType;
+	console.log('/ ballottype: ', ballotType);
 
 	var results = [];
 	for (var i=0; i<Object.keys(options).length; i++){
@@ -50,6 +52,7 @@ router.post('/',function(req,res){
 			roomcode:roomcode,
 			topic:topic,
 			options:options,
+			ballotType:ballotType,
 			owner:owner,
 			results:results,
 			done:false
@@ -61,6 +64,7 @@ router.post('/',function(req,res){
 		room.markModified('options');
 		room.markModified('results');
 		room.markModified('voters');
+
 		room.save(function(err,savedRoom){
 			if (err){
 				console.log('error saving room: ',err);
