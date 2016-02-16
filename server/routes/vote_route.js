@@ -37,7 +37,7 @@ router.post('/rank', function(req,res){
 		room.voters[votername] = rankedVotes;
 		for (var i = 0; i < votes.length; i++) {
 			if (room.results[i]){
-				room.results[i]+=votes[i];
+				room.results[i] = parseInt(room.results[i])+parseInt(votes[i]);
 			} else {
 				room.results[i]=votes[i];
 			}
