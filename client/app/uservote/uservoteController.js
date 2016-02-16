@@ -4,7 +4,7 @@ uservote.controller('uservoteController', ['$scope', '$state', 'User', 'Ballot',
   var ctrl = this;
   var ballot = Ballot.getBallot();
   var hasVoted = false;
-  var rankedVotes = {}; //{0: {name: "asd", vote: "1"}, 1: {name: "sdf", vote: "2"}}
+  var currentChoice = null;
 
   ctrl.username = User.getUser();
   ctrl.roomcode = ballot.roomcode;
@@ -17,13 +17,9 @@ uservote.controller('uservoteController', ['$scope', '$state', 'User', 'Ballot',
     $state.go('results');
   }
 
-  for (var key in ctrl.options) {
-    rankedVotes[key] = {};
-    rankedVotes[key].name = ctrl.options[key];
-    rankedVotes[key].vote = null;
+  ctrl.selectChoice = function(choiceKey){
+    currentChoice = choiceKey;
   }
-  ctrl.rankedVotes = rankedVotes;
-  console.log('rankedVotes:', rankedVotes);
 
   ctrl.submitVote = function(){
     var user = User.getUser();
