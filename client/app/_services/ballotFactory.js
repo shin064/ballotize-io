@@ -103,6 +103,23 @@ Ballotize.factory('Ballot', ['$http', '$state', 'User', 'socket', function($http
     });
   };
 
+  var voteRankedBallot = function(username, roomcode, rankedVotes) {
+    $http({
+      method: 'POST',
+      url: '/vote/rank',
+      data: {
+        code: roomcode,
+        username: username,
+        rankedVotes: rankedVotes
+      }
+    }).then(function success(response){
+      setBallot(response.data);
+      $state.go('results');
+    }, function error(response){
+      console.log('error',response);
+    });
+  }
+
   return {
     createBallot: createBallot,
     fetchBallot: fetchBallot,
@@ -110,6 +127,9 @@ Ballotize.factory('Ballot', ['$http', '$state', 'User', 'socket', function($http
     setBallot: setBallot,
     getBallot: getBallot,
     voteBallot: voteBallot,
-    endVote: endVote
+    endVote: endVote,
+    voteRankedBallot: voteRankedBallot
   }
+
+
 }]);
