@@ -17,7 +17,7 @@ results.controller('resultsController', ['$scope', 'Ballot', 'User', 'socket', f
   ctrl.endVote = function(roomcode){
     socket.emit('endVote', ballot);
     Ballot.endVote(roomcode);
-  }
+  };
 
   socket.emit('subscribe', ballot.roomcode);
   socket.emit('newVote', ballot);
@@ -31,6 +31,6 @@ results.controller('resultsController', ['$scope', 'Ballot', 'User', 'socket', f
 
   socket.on('endVote', function(data){
     ctrl.done = true;
-  })
+  });
 
 }]);

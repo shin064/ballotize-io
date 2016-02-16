@@ -51,6 +51,11 @@
       </li>
     </ul>
 
+    <h1>Voters in the room:</h1>
+    <h2>Has not voted:</h2>
+    <div ng-repeat="(key,val) in results.voters" ng-show="val===false">{{key}}</div>
+    <h2>Already voted:</h2>
+    <div ng-repeat="(key,val) in results.voters" ng-show="val!==false">{{key}}</div>
 
   </div>
 </div>

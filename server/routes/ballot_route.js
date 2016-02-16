@@ -41,30 +41,33 @@ router.post('/',function(req,res){
 		results.push(0);
 	}
 
-
 	var roomcode = Math.floor(Math.random()*9000)+1000;
 
-	var room = new db.Room({
-		roomcode:roomcode,
-		topic:topic,
-		options:options,
-		owner:owner,
-		results:results,
-		done:false
-	});
+	db.Room.findOne({roomcode:roomcode}).remove(function(){
+		var room = new db.Room({
+			roomcode:roomcode,
+			topic:topic,
+			options:options,
+			owner:owner,
+			results:results,
+			done:false
+		});
 
-	room.voters = {};
-	room.voters[owner]=false;
+		room.voters = {};
+		room.voters[owner]=false;
 
-	room.markModified('options');
-	room.markModified('results');
-	room.markModified('voters');
-	room.save(function(err,savedRoom){
-		if (err){
-			console.log('error saving room: ',err);
-			res.send(err);
-		}
-		res.json(savedRoom);
+		room.markModified('options');
+		room.markModified('results');
+		room.markModified('voters');
+		room.save(function(err,savedRoom){
+			if (err){
+				console.log('error saving room: ',err);
+				res.send(err);
+			}
+			res.json(savedRoom);
+		})
+
+
 	})
 });
 
