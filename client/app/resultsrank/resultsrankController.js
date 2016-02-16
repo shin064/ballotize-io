@@ -19,7 +19,7 @@ resultsrank.controller('resultsrankController', ['$scope', 'Ballot', 'User', 'so
     Ballot.endVote(roomcode);
   };
 
-  socket.emit('subscribe', ballot.roomcode);
+  //socket.emit('subscribe', ballot.roomcode);
   socket.emit('newVote', ballot);
 
   socket.on('newVote', function(data){

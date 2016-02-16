@@ -12,7 +12,8 @@ userrankvote.controller('userrankvoteController', ['$scope', '$state', 'User', '
   ctrl.options = ballot.options;
   ctrl.errorMsg = '';
 
-  console.log('inside userrankvote Controller');
+  socket.emit('subscribe',{roomcode:ctrl.roomcode,username:ctrl.username});
+
   if (ballot.done){
     $state.go('resultsrank');
   }
