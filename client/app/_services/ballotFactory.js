@@ -1,6 +1,6 @@
 var Ballotize = angular.module('Ballotize');
 
-Ballotize.factory('Ballot', ['$http', '$state', 'User', function($http, $state, User){
+Ballotize.factory('Ballot', ['$http', '$state', 'User', 'socket', function($http, $state, User, socket){
   var currentBallot = {};
 
   var createBallot = function(ballotInfo){
@@ -33,6 +33,7 @@ Ballotize.factory('Ballot', ['$http', '$state', 'User', function($http, $state, 
       } else {
         console.log(response.data);
         setBallot(response.data);
+        socket.emit('newVote',response.data);
         $state.go('uservote');
       }
     }, function error(response){
