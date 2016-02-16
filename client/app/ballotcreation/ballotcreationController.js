@@ -23,6 +23,14 @@ ballotcreation.controller('ballotcreationController',  ['$scope', '$http', '$sta
 	  User.makeOwner();
 	};
 
+	ctrl.submitrank = function() {
+	  ctrl.saved.topic = ctrl.topic;
+	  ctrl.saved.options = angular.copy(ctrl.options);
+	  ctrl.saved.username = User.getUser();
+	  Ballot.createRankBallot(ctrl.saved);
+	  User.makeOwner();
+	};
+
 	ctrl.reset = function() {
 		ctrl.master = {0: '', 1: ''};
 	  ctrl.options = angular.copy(ctrl.master);

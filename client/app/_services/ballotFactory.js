@@ -18,6 +18,21 @@ Ballotize.factory('Ballot', ['$http', '$state', 'User', 'socket', function($http
 	  });
   };
 
+  var createRankBallot = function(ballotInfo){
+    $http({
+      method: 'POST',
+      url: '/ballot',
+      data: JSON.stringify(ballotInfo),
+      headers: {'Content-Type': 'application/json'}
+    }).then(function success(response){
+      console.log('success',response);
+      setBallot(response.data);
+      $state.go('userrankvote');
+    }, function error(response){
+      console.log('error',response);
+    });
+  };
+
   var fetchBallot = function(input, username){
     $http({
       method: 'GET',
@@ -122,6 +137,7 @@ Ballotize.factory('Ballot', ['$http', '$state', 'User', 'socket', function($http
 
   return {
     createBallot: createBallot,
+    createRankBallot: createRankBallot,
     fetchBallot: fetchBallot,
     fetchResults: fetchResults,
     setBallot: setBallot,
